@@ -1,0 +1,208 @@
+/* ======= Base & Theme ======= */
+:root{
+  --bg: #0b0f14;
+  --card: #121820;
+  --text: #e8eef5;
+  --muted: #b6c2cf;
+  --accent: #4cc9f0;          /* Header/nav accent — change this to update header color */
+  --accent-2: #90e0ef;
+  --link: #66d9ff;
+  --ring: rgba(76, 201, 240, 0.35);
+  --border: rgba(255,255,255,0.08);
+  --shadow: 0 6px 24px rgba(0,0,0,0.35);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+  background: radial-gradient(1200px 600px at 20% -10%, rgba(76,201,240,0.12), transparent 60%),
+              radial-gradient(1200px 600px at 120% 10%, rgba(144,224,239,0.1), transparent 60%),
+              var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+/* ======= Container ======= */
+.container {
+  width: min(100%, 1000px);
+  margin: 0 auto;
+  padding: 24px;
+}
+
+/* ======= Header ======= */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  backdrop-filter: saturate(150%) blur(8px);
+  background: linear-gradient(180deg, color-mix(in oklab, var(--accent) 20%, transparent), transparent);
+  border-bottom: 1px solid var(--border);
+}
+
+.header-inner {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 24px;
+}
+
+.brand {
+  display: grid;
+  gap: 6px;
+}
+
+.brand .name {
+  margin: 0;
+  font-size: clamp(24px, 3.2vw, 36px);
+  letter-spacing: 0.4px;
+  font-weight: 800;
+}
+
+.brand .meta {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.meta a {
+  color: var(--link);
+  text-decoration: none;
+}
+.meta a:hover { text-decoration: underline; }
+
+/* ======= Nav ======= */
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.nav a {
+  --pad: 10px;
+  color: var(--text);
+  text-decoration: none;
+  font-size: 14px;
+  padding: 8px var(--pad);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  transition: transform .2s ease, background .2s ease, border-color .2s ease, color .2s ease;
+  background: color-mix(in oklab, var(--card) 92%, transparent);
+}
+
+.nav a:hover {
+  background: color-mix(in oklab, var(--accent) 18%, var(--card));
+  border-color: color-mix(in oklab, var(--accent) 40%, var(--border));
+  transform: translateY(-1px);
+}
+
+/* ======= Hero (top block) ======= */
+.hero {
+  padding: 28px 24px 8px;
+  border-bottom: 1px dashed var(--border);
+}
+
+/* ======= Sections ======= */
+.section {
+  margin: 22px 0;
+  padding: 22px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent 40%), var(--card);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+}
+
+.section h2 {
+  margin: 0 0 12px;
+  font-size: clamp(18px, 2.2vw, 22px);
+  letter-spacing: 0.3px;
+  display: inline-flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.section h2::after{
+  content: "";
+  height: 10px;
+  width: 10px;
+  border-radius: 999px;
+  background: radial-gradient(circle at 30% 30%, var(--accent-2), var(--accent));
+  box-shadow: 0 0 0 6px var(--ring);
+  opacity: .7;
+}
+
+.section p { margin: 8px 0 0; color: var(--text); }
+.section .muted { color: var(--muted); }
+
+/* Lists */
+ul {
+  margin: 8px 0 0 18px;
+  padding: 0;
+}
+li {
+  margin: 8px 0;
+  padding-left: 6px;
+}
+
+/* Two-column helpers (for Skills/Strengths) */
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px 18px;
+}
+@media (max-width: 640px){
+  .grid-2 { grid-template-columns: 1fr; }
+}
+
+/* Pills (for skill chips) */
+.pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+.pill {
+  font-size: 13px;
+  padding: 6px 10px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: color-mix(in oklab, var(--accent) 10%, var(--card));
+}
+
+/* ======= Footer ======= */
+.footer {
+  margin: 26px 0 60px;
+  color: var(--muted);
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  border-top: 1px solid var(--border);
+  padding-top: 18px;
+}
+.footer a { color: var(--link); text-decoration: none; }
+.footer a:hover { text-decoration: underline; }
+
+/* ======= Utilities ======= */
+.card-title { font-weight: 700; }
+.small { font-size: 14px; color: var(--muted); }
+.center { text-align: center; }
+
+/* Smooth anchor offset (for sticky header) */
+:target {
+  scroll-margin-top: 90px;
+}
+
+/* ======= Print (optional, looks good as 1–2 pages) ======= */
+@media print {
+  body { background: #fff; color: #000; }
+  .site-header, .nav, .footer { display: none !important; }
+  .section {
+    break-inside: avoid;
+    box-shadow: none;
+    border: 1px solid #ddd;
+    background: #fff;
+  }
+}
