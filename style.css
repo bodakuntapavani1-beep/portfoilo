@@ -197,7 +197,7 @@ li {
 
 /* ======= Print (optional, looks good as 1–2 pages) ======= */
 @media print {
-  body { background: #fff; color: #000; }
+  body { background: #ffffff; color: #000; }
   .site-header, .nav, .footer { display: none !important; }
   .section {
     break-inside: avoid;
